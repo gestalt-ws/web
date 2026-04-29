@@ -1,0 +1,22 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
+# Editor-based HTTP Client requests
+/httpRequests/
+
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+# IntelliJ
+.idea
+
+#Vite
+.DS_Store
+.env
+/node_modules/
+
+# React Router
+/.react-router/
+/build/
