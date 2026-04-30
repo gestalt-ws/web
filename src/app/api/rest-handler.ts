@@ -84,5 +84,28 @@ export class RestHandler {
         return await response.json();
     }
 
+    /**
+     * Handles HTTP DELETE request.
+     * @param endpoint - Resource uri, e.g. `/files`.
+     * @param payload - Generic representing response.
+     * @return Promise<R> - Promise of generic response type.
+     * */
+    public async handleDelete<T, R = unknown>(endpoint: string, payload: T): Promise<R> {
+        const token = useAuthStore.getState().token;
+        const url = `${this.baseURL}/${endpoint}`;
+        const options: RequestInit = {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(payload)
+        };
+
+        const response = await fetch(url, options);
+        await this.handleFailedRequest(response);
+        return await response.json();
+    }
+
 }
 
