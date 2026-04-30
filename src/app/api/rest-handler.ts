@@ -47,5 +47,42 @@ export class RestHandler {
         }
     }
 
+    /**
+     * Handles HTTP GET request.
+     * @param endpoint - Resource uri, e.g. `/files`.
+     * @return Promise<R> - Promise of generic response type.
+     * */
+    public async handleGet<R = unknown>(endpoint: string): Promise<R> {
+        const userId = this.userId;
+        const url = `${this.baseURL}/${endpoint}${userId}`;
+        const options: RequestInit = { method: "GET" };
+        const response = await fetch(url, options);
+        await this.handleFailedRequest(response);
+        return await response.json();
+    }
+
+    /**
+     * Handles HTTP POST request.
+     * @param endpoint - Resource uri, e.g. `/files`.
+     * @param payload - Generic representing response.
+     * @return Promise<R> - Promise of generic response type.
+     * */
+    public async handlePost<T, R = unknown>(endpoint: string, payload: T): Promise<R> {
+        const token = useAuthStore.getState().token;
+        const url = `${this.baseURL}/${endpoint}`;
+        const options: RequestInit = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(payload)
+        };
+
+        const response = await fetch(url, options);
+        await this.handleFailedRequest(response);
+        return await response.json();
+    }
+
 }
 
