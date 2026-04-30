@@ -14,5 +14,14 @@ export class RestHandler {
         this.baseURL = baseURL;
     }
 
+    /**
+     * Gets the user UUID from keycloak kc.token.sub in AuthStore.
+     * @return string | null of userId (uuid as string or null val).
+     * */
+    private get userId(): string | null {
+        const { userId } = useAuthStore.getState();
+        return userId;
+    }
+
 }
 
