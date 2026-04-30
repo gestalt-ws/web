@@ -34,5 +34,18 @@ export class RestHandler {
         return token;
     }
 
+    /**
+     * Handles logic for failed HTTP request.
+     * @return Promise<void>
+     * @throws Error containing HTTP status and information backend allows frontned to see.
+     * */
+    private async handleFailedRequest(response: Response): Promise<void> {
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error(`Request failed: ${response.status} ${response.statusText}`, errorText);
+            throw new Error(`Request failed with status ${response.status}`);
+        }
+    }
+
 }
 
