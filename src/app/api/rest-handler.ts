@@ -8,10 +8,11 @@ export class RestHandler {
 
     /**
      * @constructor
-     * @param baseURL The base URL for REST api calls to the Gestalto Control Plane Backend.
+     * @param baseURL The base URL for REST api calls to the Gestalt Control Plane Backend.
      * */
     constructor(baseURL: string) {
         this.baseURL = baseURL;
     }
 
 }
+
