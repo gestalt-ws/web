@@ -5,25 +5,25 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { PanelLeftIcon } from "lucide-react"
 import { Slot } from "radix-ui"
 
-import { useIsMobile } from "src/app/shared/hooks/use-mobile"
-import { cn } from "src/app/shared/lib/utils"
-import { Button } from "src/app/shared/components/ui/button"
-import { Input } from "src/app/shared/components/ui/input"
-import { Separator } from "src/app/shared/components/ui/separator"
+import { useIsMobile } from "@/app/shared/hooks/use-mobile"
+import { cn } from "@/app/shared/lib/utils"
+import { Button } from "@/app/shared/components/ui/button"
+import { Input } from "@/app/shared/components/ui/input"
+import { Separator } from "@/app/shared/components/ui/separator"
 import {
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from "src/app/shared/components/ui/sheet"
-import { Skeleton } from "src/app/shared/components/ui/skeleton"
+} from "@/app/shared/components/ui/sheet"
+import { Skeleton } from "@/app/shared/components/ui/skeleton"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "src/app/shared/components/ui/tooltip"
+} from "@/app/shared/components/ui/tooltip"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
