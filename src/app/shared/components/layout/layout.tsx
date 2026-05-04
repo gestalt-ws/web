@@ -1,0 +1,32 @@
+import { SidebarProvider, SidebarTrigger } from "@/app/shared/components/ui/sidebar"
+import { AppSidebar } from "@/app/shared/components/navigation/sidebars/app-sidebar"
+import { Outlet } from "react-router"
+import { AppTopbar } from "@/app/shared/navigation/topbars/app-topbar"
+import {SecondarySidebar} from "@/app/shared/components/navigation/sidebars/secondary-sidebar.tsx";
+import {SnackbarProvider} from "notistack";
+
+interface LayoutProps {
+    children?: React.ReactNode;
+}
+
+export default function Layout({ children }: LayoutProps) {
+    return (
+        <SidebarProvider>
+            <div className="flex w-screen overflow-x-hidden ">
+                <AppSidebar />
+                <SecondarySidebar />
+                <div className="pl-16 flex flex-1 min-w-0 flex-col">
+                    <AppTopbar>
+                        <SidebarTrigger />
+                    </AppTopbar>
+                    <SnackbarProvider />
+                    <main className="flex-1 min-w-0 overflow-x-hidden theme-scroll">
+                        {children}
+                        <Outlet />
+                    </main>
+
+                </div>
+            </div>
+        </SidebarProvider>
+    )
+}
